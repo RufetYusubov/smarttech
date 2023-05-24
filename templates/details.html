@@ -1,0 +1,29 @@
+{% extends 'base.html' %} 
+{% block title %}  
+<title> Details </title>
+{% endblock %} 
+
+{% block content %} 
+<center>
+<div class="card text-bg-primary mt-3" style="max-width: 18rem;">
+   <div class="card-header">{{ laptop.brend }}</div>
+    <div class="card" style="width: 18rem;">
+      <img src="{{ laptop.image.url }}" class="card-img-top" alt="...">
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">Qiyməti: {{ laptop.price }} azn</h5>
+      <p class="card-text">Tipi: {{ laptop.type }}</p>
+      <p class="card-text">Rəngi: {{ laptop.color }}</p>
+      <p class="card-text">Təyinatı: {{ laptop.destination }}</p>
+      <p class="card-text">Əməliyyat sistemi: {{ laptop.operating_system }}</p>
+      <p class="card-text">Prosessor: {{ laptop.prosessor }}</p>
+      <p class="card-text">Ram: {{ laptop.ram }} gb</p>
+      <p class="card-text">Yaddaşı: {{ laptop.memory_size }} gb</p>
+      <p class="card-text">Videokartı: {{ laptop.videocard }} </p>
+      <p class="card-text">Ekran ölçüsü: {{ laptop.screen_size }} </p>
+      <p class="card-text">Çəkisi: {{ laptop.weight }} </p>
+      <p class="card-text">Zəmanəti: {{ laptop.warranty }} ay</p>
+    </div>
+</div>
+</center>
+  {% endblock %}
