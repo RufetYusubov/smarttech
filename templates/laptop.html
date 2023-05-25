@@ -12,8 +12,8 @@
           <div class="card h-100" style="width:50%">
             <img src="{{ laptop.image.url }}" class="card-img-top" alt="">
             <div class="card-body">
-              <h5 class="card-title"></a>{{ laptop.brend }}</h5>
-              <small class="text-light"><a class = " btn btn-primary">{{ laptop.price }} azn </a></small>
+              <h5 class="card-title">{{ laptop.brend }}</h5>
+              <small class="text-light"><span class = "btn btn-primary" style="cursor: auto;">{{ laptop.price }} azn </span></small>
             </div>
             <div class="card">
               <a class="btn btn-danger" href="{% url 'details' laptop.id %}">more</a>
