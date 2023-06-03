@@ -1,15 +1,15 @@
 {% extends 'base.html' %} 
-{% block title %} 
-<title> Sign Up</title>
+{% block title %}
+<title>Login</title>
 {% endblock %} 
 
-{% block content %}
+{% block content %} 
 <div class="container">
-    <h1> Sign Up </h1>
+    <h1>Login</h1>
     <form method="POST">
         {% csrf_token %}
         <div class="mb-3">
-        <label for="exampleInputEmail1"  class="form-label">Username</label>
+        <label for="exampleInputEmail1" class="form-label">Username</label>
         <input type="text" name = "username" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
         <div id="emailHelp" class="form-text">Username must be unique</div>
         </div>
@@ -17,7 +17,7 @@
         <label for="exampleInputPassword1" class="form-label">Password</label>
         <input type="password" name = "password" class="form-control" id="exampleInputPassword1">
         </div>
-        <button type="submit" class="btn btn-primary">Sign up</button>
+        <button type="submit" class="btn btn-primary">Login</button>
     </form>
     {% if messages %}
     <ul class="messages">
