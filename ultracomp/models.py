@@ -16,7 +16,7 @@ class LaptopModel(models.Model):
     bluetooth = models.BooleanField(default=True)
     wifi = models.BooleanField(default=True)
     connection = models.BooleanField(default=True)
-    weight = models.FloatField(default=0)
+    weight = models.FloatField(blank=True,null=True)
     warranty = models.IntegerField(default=0)
     about = models.TextField(blank=True, null=True)
     

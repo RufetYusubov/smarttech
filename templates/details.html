@@ -1,6 +1,6 @@
 {% extends 'base.html' %} 
 {% block title %}  
-<title> Details </title>
+<title> Laptop's detail </title>
 {% endblock %} 
 
 {% block content %} 
@@ -10,6 +10,7 @@
     <div class="card" style="width: 18rem;">
       <img src="{{ laptop.image.url }}" class="card-img-top" alt="...">
     </div>
+  <div class="container mt-3">
     <div class="card-body">
       <h5 class="card-title">Qiyməti: {{ laptop.price }} azn</h5>
       <p class="card-text">Tipi: {{ laptop.type }}</p>
@@ -24,6 +25,7 @@
       <p class="card-text">Çəkisi: {{ laptop.weight }} </p>
       <p class="card-text">Zəmanəti: {{ laptop.warranty }} ay</p>
     </div>
+  </div>
 </div>
 </center>
-  {% endblock %}
+{% endblock %}

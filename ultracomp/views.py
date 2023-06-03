@@ -8,7 +8,7 @@ def laptop(request):
         "laptops" : laptops,
     }
     return render(request, 'laptop.html', context)
-
+#----------------------------------------------------------------
 def details(request,id):
     laptop = LaptopModel.objects.get(id=id)
 
