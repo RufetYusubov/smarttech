@@ -2,12 +2,12 @@ from django.shortcuts import render
 from  ultracomp.models import LaptopModel
 
 
-def laptop(request):
+def home(request):
     laptops = LaptopModel.objects.order_by("price")
     context = {
         "laptops" : laptops,
     }
-    return render(request, 'laptop.html', context)
+    return render(request, 'home.html', context)
 #----------------------------------------------------------------
 def details(request,id):
     laptop = LaptopModel.objects.get(id=id)
