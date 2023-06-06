@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 class LaptopModel(models.Model):
     brend = models.CharField(max_length=300)
@@ -19,14 +20,31 @@ class LaptopModel(models.Model):
     weight = models.FloatField(blank=True,null=True)
     warranty = models.IntegerField(default=0)
     about = models.TextField(blank=True, null=True)
-    
 
-    def __str__(self):
-        return self.brend
     
     class Meta:
         verbose_name = "laptop"
         verbose_name_plural = "laptops"
+
+
+    def __str__(self):
+        return self.brend
+    
+  
+#----------------------------------------------------------------------------------
+class CommentModel(models.Model):
+    user = models.ForeignKey(User, on_delete = models.CASCADE, related_name="user_comments")
+    laptop = models.ForeignKey(LaptopModel, on_delete = models.CASCADE, blank=True, null=True, related_name="laptop_comments")
+    parent = models.ForeignKey("self",on_delete = models.CASCADE,blank=True,null=True, related_name="replies")
+    comment = models.TextField()
+    pub_date = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        verbose_name = "comment"
+        ordering = ("id",)
+
+    def __str__(self) -> str:
+        return self.user.username + " " + str(self.id)
 
 
 

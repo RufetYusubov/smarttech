@@ -28,4 +28,68 @@
   </div>
 </div>
 </center>
+<div class="container my-3">
+  {% if request.user.is_authenticated %}
+  <form class="my-3" method="POST">
+    {% csrf_token %}
+    <input type = "hidden" name = "choice" value="comment">
+    <input type = "hidden" name = "laptop_id" value="{{ laptop.id }}">
+    <div class='mb-3'>    
+      <label for='textarea-7680453'>Your comment</label>
+      <textarea class='form-control' id='textarea-7680453' name='comment' rows='5' placeholder='Your comment...'></textarea>
+    </div>
+    <button type="submit" id="submit-1492574" class="btn btn-primary mr-1">Send</button>
+  </form>
+  {% else %} 
+  <p ><a href = "{% url 'login' % }"> Login </a> to write comment</p>
+  {% endif %}
+    {% for comment in laptop_comments %}
+     <div class="card">
+        <div class="card-header">
+          {{ comment.user.username}}
+          {% if comment in user_comments %}
+          <a href = "{% url 'delete_comment' comment.id %}" style = "float:right;">Delete</a>
+          {% endif %}
+        </div>
+        <div class="card-body">
+          <blockquote class="blockquote mb-0">
+            <p>{{ comment.comment }}</p>
+            <footer class="blockquote-footer">{{ comment.pub_date }}</cite></footer>
+          </blockquote>
+        </div>
+        {% if request.user.is_authenticated %}
+        <form class="mx-5 my-3" method="POST">
+          {% csrf_token %}
+          <input type = "hidden" name = "choice" value="reply">
+          <input type="hidden" name = "laptop_id" value = "{{ laptop.id }}"> 
+          <input type="hidden" name = "comment_id" value = "{{ comment.id }}">       
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Your reply</label>
+            <textarea class="form-control" name = "reply" id="exampleInputEmail1" aria-describedby="emailHelp"></textarea>
+          </div>
+            <button type="submit" class="btn btn-primary">Reply</button>
+          </form>
+        {% else %}
+        <p><a href="{% url 'login' %}">Login</a>to write comment </p>
+        {% endif %}
+        {% for reply in comment.replies.all %}
+        <div class="card my-3 mx-5">
+          <div class="card-header">
+            {{ reply.user.username}}
+            {% if reply in user_comments %}
+            <a href = "{% url 'delete_comment' reply.id %}" style = "float:right;">Delete</a>
+            {% endif %}
+          </div>
+          <div class="card-body">
+            <blockquote class="blockquote mb-0">
+              <p>{{ reply.comment }}</p>
+              <footer class="blockquote-footer">{{ reply.pub_date }}</cite></footer>
+            </blockquote>
+          </div>
+        </div>
+      {% endfor %}
+    {% endfor %}
+    </div>
+</div>
+
 {% endblock %}
